@@ -1,20 +1,20 @@
-# utils.py
 import subprocess
-
+from pathlib import Path
 
 def push_git(commit_message="data: atualiza estoque de remedios"):
   """Adiciona, comita e faz o push das alterações do repositório para o GitHub."""
+  repo_root = Path(__file__).parent.parent
+
   try:
     print("\n[GIT] Enviando alterações para o GitHub...")
 
-    # Adiciona todos os arquivos alterados
-    subprocess.run(["git", "add", "."], check=True)
+    subprocess.run(["git", "add", "."], check=True, cwd=repo_root)
 
-    # Cria o commit
-    subprocess.run(["git", "commit", "-m", commit_message], check=True)
+    subprocess.run(
+        ["git", "commit", "-m", commit_message], check=True, cwd=repo_root
+    )
 
-    # Envia para a branch atual no GitHub
-    subprocess.run(["git", "push"], check=True)
+    subprocess.run(["git", "push"], check=True, cwd=repo_root)
 
     print(" [SUCESSO] Repositório atualizado no GitHub com sucesso!")
 
