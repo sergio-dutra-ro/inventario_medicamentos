@@ -1,3 +1,5 @@
+# notification.py
+
 import os
 
 import smtplib
@@ -37,7 +39,7 @@ def send_email_alert(title, contents):
 	except Exception as e:
 		print(f" [ERRO] Unable to send email: {e}")
 
-csv_name = "inventario_remedios.csv"
+csv_name = "data/inventario_remedios.csv"
 csv_path = Path(__file__).parent / csv_name
 
 df_meds = pd.DataFrame()
