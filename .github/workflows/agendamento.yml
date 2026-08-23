@@ -25,4 +25,4 @@ jobs:
         env:
           SENDER_EMAIL: ${{ secrets.EMAIL_USER }}
           SENDER_ID: ${{ secrets.EMAIL_PASS }}
-        run: python verificar_estoque.py
+        run: python main.py
