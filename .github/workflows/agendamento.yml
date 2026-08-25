@@ -3,7 +3,7 @@ name: Verificação Diária de Medicamentos
 on:
   schedule:
     # 09:00 UTC = 06:00 do Horário de Brasília (BRT)
-    - cron: '0 9 * * *'
+    - cron: '0 13 * * *'
   workflow_dispatch:
 
 jobs:
