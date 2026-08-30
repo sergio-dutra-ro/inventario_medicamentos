@@ -71,12 +71,22 @@ def update_invetory():
       print(f"[ERRO] Arquivo {csv_name} não encontrado ou vazio.")
       exit()
 
-    print("Atualizando quantidade de remédios (digite -1 para cancelar)")
+
+    title = "Atualizar Medicamentos"
+    title_bar= len(title) + 6
+    print(f"\n{title_bar * '-'}")
+    print(f"   {title}   ")
+    print(f"{title_bar * '-'}\n")
+
+    print("=== Estoque atual ===")
+    print(df_meds)
+
+    print("\nAtualizando quantidade de remédios (digite -1 para cancelar)")
     stock_list = []
     for i, row in df_meds.iterrows():
       # Aspas simples nas f-strings corrigidas
       new_stock = int(
-          input(f"[ATUALIZAR QUANTIDADE] {row['nome']}, {row['medicamento']}: ")
+          input(f"[ATUALIZAR QUANTIDADE] {row['nome']}, {row['medicamento']} {row['dosagem']}: ")
       )
       if new_stock == -1:
         print("Operação cancelada.")
