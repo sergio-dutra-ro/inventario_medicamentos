@@ -18,6 +18,7 @@ def input_script_option() -> str:
         '0' : 'Exit',
         '1' : 'Atualizar Estoque',
         '2' : 'Restaurar Backup',
+        '3' : 'Incrementar/Decrementar Medicamento',
         }
     
     while True:
@@ -51,6 +52,7 @@ def script_choice() -> Callable | None:
     scripts_available = {
         '1' : update_invetory,
         '2' : restore_bak,
+        '3' : update_med,
     }
     
     choice = input_script_option()
@@ -72,7 +74,7 @@ def update_invetory():
       exit()
 
 
-    title = "Atualizar Medicamentos"
+    title = "Atualizar Inventário"
     title_bar= len(title) + 6
     print(f"\n{title_bar * '-'}")
     print(f"   {title}   ")
@@ -84,7 +86,6 @@ def update_invetory():
     print("\nAtualizando quantidade de remédios (digite -1 para cancelar)")
     stock_list = []
     for i, row in df_meds.iterrows():
-      # Aspas simples nas f-strings corrigidas
       new_stock = int(
           input(f"[ATUALIZAR QUANTIDADE] {row['nome']}, {row['medicamento']} {row['dosagem']}: ")
       )
@@ -157,3 +158,85 @@ def restore_bak():
         elif confirmation == "N":
             print("\n Restauração cancelada.")
             break
+
+def update_med():
+    csv_name = "data/inventario_remedios.csv"
+    csv_path = Path(__file__).parent.parent / csv_name
+
+    df_meds = pd.DataFrame()
+    if csv_path.is_file():
+      df_meds = pd.read_csv(csv_path)
+
+    if df_meds.empty:
+      print(f"[ERRO] Arquivo {csv_name} não encontrado ou vazio.")
+      exit()
+
+    # User Interaction
+    title = "Incrementar/Decrementar Medicamento"
+    title_bar= len(title) + 6
+    print(f"\n{title_bar * '-'}")
+    print(f"   {title}   ")
+    print(f"{title_bar * '-'}\n")
+
+    print("=== Estoque atual ===")
+    print(df_meds)
+
+    med_ID = input("\nDigite o ID do medicamento que deseja modificar: ").strip()
+    print("Digite a quantidade a ser acrescentada ou subtraída:")
+    print("Exemplo:")
+    print("  13 => Aumenta em 13 unidades")
+    print("  -7 => Diminui em 7 unidades")
+    increment = input("\nDigite a quantidade (digite 'x' para cancelar): ").strip().lower()
+    
+    if increment == 'x':
+        print("Operação cancelada.")
+        return
+
+    try:
+        increment = int(increment)
+    except ValueError:
+        print(" [ERRO] Valor digitado inválido (deve ser um número inteiro ou 'x'). Operação Cancelada")
+        return
+
+    id_mask = df_meds['id'] == med_ID
+    if not id_mask.any():
+        print(f" [ERRO] Medicamento com ID '{med_ID}' não encontrado. Operação Cancelada")
+        return
+
+    # Altering DataFrame
+    medicamento = df_meds.loc[id_mask, 'medicamento'].values[0]
+    dosagem = df_meds.loc[id_mask, 'dosagem'].values[0]
+    qtd_atual = df_meds.loc[id_mask, 'qtd_atual'].values[0]
+    novo_valor = qtd_atual + increment
+    
+    print("\n\nConfira a quantidade a ser alterada.")
+    print(f"{medicamento} {dosagem}: {qtd_atual} => {novo_valor}")
+
+    new_csv = pd.DataFrame()
+    while True:
+      confirmation = input("Confirma? (S/N) ").strip().upper()
+
+      if confirmation == "S":
+        new_csv = df_meds.copy()
+        new_csv.loc[id_mask, 'qtd_atual'] = novo_valor
+        print("== Novo Estoque ==")
+        print(new_csv)
+        break
+      elif confirmation == "N":
+        break
+
+
+    # Save File
+    if not new_csv.empty:
+        df_meds.to_csv(
+            Path(__file__).parent.parent / "data/inventario_remedios_bak.csv",
+            index=False,
+            encoding="utf-8",
+        )
+        new_csv.to_csv(csv_path, index=False, encoding="utf-8")
+        print("\n [SUCESSO] Estoque atualizado e backup criado com sucesso!")
+
+        utils.push_git(commit_message="data: atualiza estoque de remedios")
+
+    else:
+      print("\n Operação cancelada.") 
