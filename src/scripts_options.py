@@ -6,7 +6,7 @@ from typing import Callable
 import pandas as pd
 import src.utils as utils
 
-def input_script_option() -> str:
+def input_script_options() -> str:
     '''
     Presents the options of available scripts.
 
@@ -55,7 +55,8 @@ def script_choice() -> Callable | None:
         '3' : update_med,
     }
     
-    choice = input_script_option()
+    choice = input_script_options()
+    utils.pull_git()
     if choice == '0' or choice not in scripts_available:
         return None
     

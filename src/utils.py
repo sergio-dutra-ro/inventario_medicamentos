@@ -25,3 +25,25 @@ def push_git(commit_message="data: atualiza estoque de remedios"):
     )
   except Exception as e:
     print(f"\n [ERRO] Ocorreu um erro inesperado: {e}")
+
+
+def pull_git():
+  """Faz um pull antes de iniciar qualquer alteração."""
+  repo_root = Path(__file__).parent.parent
+
+  try:
+    print("\n[GIT] Buscando alterações do GitHub...")
+
+    subprocess.run(["git", "pull"], check=True, cwd=repo_root)
+
+    print(" [SUCESSO] Repositório atualizado localmente com sucesso!")
+
+  except subprocess.CalledProcessError as e:
+    print(
+        f"\n [ERRO] Falha ao executar o comando Git. Código de saída:"
+        f" {e.returncode}"
+    )
+  except Exception as e:
+    print(f"\n [ERRO] Ocorreu um erro inesperado: {e}")
+
+    
