@@ -56,10 +56,10 @@ def script_choice() -> Callable | None:
     }
     
     choice = input_script_options()
-    utils.pull_git()
     if choice == '0' or choice not in scripts_available:
         return None
     
+    utils.pull_git()
     return scripts_available[choice]
 
 def update_invetory():

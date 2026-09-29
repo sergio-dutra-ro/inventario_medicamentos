@@ -36,8 +36,6 @@ def pull_git():
 
     subprocess.run(["git", "pull"], check=True, cwd=repo_root)
 
-    print(" [SUCESSO] Repositório atualizado localmente com sucesso!")
-
   except subprocess.CalledProcessError as e:
     print(
         f"\n [ERRO] Falha ao executar o comando Git. Código de saída:"
@@ -46,4 +44,3 @@ def pull_git():
   except Exception as e:
     print(f"\n [ERRO] Ocorreu um erro inesperado: {e}")
 
-    
