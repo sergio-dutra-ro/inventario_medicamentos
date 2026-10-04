@@ -2,7 +2,7 @@
 
 import os
 
-import smtplib
+import smtplib # Simple Mail Transfer Protocol (SMTP)
 import pandas as pd
 from pathlib import Path
 from email.mime.text import MIMEText

@@ -6,7 +6,7 @@ def push_git(commit_message="data: atualiza estoque de remedios"):
   repo_root = Path(__file__).parent.parent
 
   try:
-    print("\n[GIT] Enviando alterações para o GitHub...")
+    print("\n[GIT] Enviando alterações para o GitHub...\n")
 
     subprocess.run(["git", "add", "."], check=True, cwd=repo_root)
 
@@ -32,15 +32,15 @@ def pull_git():
   repo_root = Path(__file__).parent.parent
 
   try:
-    print("\n[GIT] Buscando alterações do GitHub...")
+    print("\n[GIT] Buscando alterações do GitHub...\n")
 
     subprocess.run(["git", "pull"], check=True, cwd=repo_root)
 
   except subprocess.CalledProcessError as e:
     print(
         f"\n [ERRO] Falha ao executar o comando Git. Código de saída:"
-        f" {e.returncode}"
+        f" {e.returncode}\n"
     )
   except Exception as e:
-    print(f"\n [ERRO] Ocorreu um erro inesperado: {e}")
+    print(f"\n [ERRO] Ocorreu um erro inesperado: {e}\n")
 
