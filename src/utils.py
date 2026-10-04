@@ -16,7 +16,7 @@ def push_git(commit_message="data: atualiza estoque de remedios"):
 
     subprocess.run(["git", "push"], check=True, cwd=repo_root)
 
-    print(" [SUCESSO] Repositório atualizado no GitHub com sucesso!")
+    print("\n[SUCESSO] Repositório atualizado no GitHub com sucesso!")
 
   except subprocess.CalledProcessError as e:
     print(
