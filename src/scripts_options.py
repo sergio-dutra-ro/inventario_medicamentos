@@ -1,17 +1,16 @@
 # scripts_options.py
 
 from pathlib import Path
-from typing import Callable
+from collections.abc import Callable
 
 import pandas as pd
 import src.utils as utils
 
 def input_script_options() -> str:
     '''
-    Presents the options of available scripts.
+    Presents the options for the available scripts.
 
     :return: string with the key for the script function.
-    :rtype: str
     '''
 
     script_options = {
@@ -33,14 +32,13 @@ def input_script_options() -> str:
         if choice in script_options:
             return choice
 
-        print(f"\n-->ERROR: Option '{choice}' is not available\n")
+        print(f"\n-->ERROR: Option '{choice}' is not available.\n")
 
 def script_choice() -> Callable | None:
     '''
     Options to choose which script to run.
 
     :return: function for the script
-    :rtype: Callable
     '''
 
     title = "Inventário de Medicamentos"

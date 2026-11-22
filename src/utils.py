@@ -1,8 +1,14 @@
 import subprocess
 from pathlib import Path
 
-def push_git(commit_message="data: atualiza estoque de remedios"):
-  """Adiciona, comita e faz o push das alterações do repositório para o GitHub."""
+def push_git(commit_message : str ="data: atualiza estoque de remedios"):
+  """
+  Adiciona, commita e faz o push das alterações do repositório para o GitHub.
+
+  Parameters:
+  `commit_message`: Mensagem para o commit.
+  """
+
   repo_root = Path(__file__).parent.parent
 
   try:
@@ -29,6 +35,8 @@ def push_git(commit_message="data: atualiza estoque de remedios"):
 
 def pull_git():
   """Faz um pull antes de iniciar qualquer alteração."""
+
+  
   repo_root = Path(__file__).parent.parent
 
   try:
