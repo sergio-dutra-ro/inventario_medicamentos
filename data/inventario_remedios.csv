@@ -1,13 +1,13 @@
 nome,medicamento,qtd_atual,qtd_semana,dosagem,id
-Nathália,Acetilcisteína,7,14,600mg,N01
+Nathália,Acetilcisteína,0,14,600mg,N01
 Nathália,Bromidrato de Vortioxetina,0,14,10mg,N02
-Nathália,Carbonato de Lítio,12,14,450mg,N03
-Nathália,Clonazepam,9,14,2mg,N04
-Nathália,Cloridrato de Clomipramina,27,0,25mg,N05
-Nathália,Cloridrato de Clomipramina,4,14,75mg,N06
-Nathália,Dapagliflozina,10,7,10mg,N07
+Nathália,Carbonato de Lítio,0,14,450mg,N03
+Nathália,Clonazepam,0,14,2mg,N04
+Nathália,Cloridrato de Clomipramina,0,0,25mg,N05
+Nathália,Cloridrato de Clomipramina,13,14,75mg,N06
+Nathália,Dapagliflozina,3,7,10mg,N07
 Nathália,Hydrion,11,4,?mg,N08
-Nathália,Midazolam,27,7,15mg,N09
-Nathália,Risperidona,33,21,3mg,N10
-Sérgio,Bupropriona 24h,59,7,150mg,S01
-Sérgio,Paroxetina,98,7,20mg,S02
+Nathália,Midazolam,23,7,15mg,N09
+Nathália,Risperidona,12,21,3mg,N10
+Sérgio,Bupropriona 24h,52,7,150mg,S01
+Sérgio,Paroxetina,91,7,20mg,S02
