@@ -1,13 +1,12 @@
-nome,medicamento,qtd_atual,qtd_semana,dosagem,id
-Nathália,Acetilcisteína,0,14,600mg,N01
-Nathália,Bromidrato de Vortioxetina,0,14,10mg,N02
-Nathália,Carbonato de Lítio,0,14,450mg,N03
-Nathália,Clonazepam,0,14,2mg,N04
-Nathália,Cloridrato de Clomipramina,0,0,25mg,N05
-Nathália,Cloridrato de Clomipramina,13,14,75mg,N06
-Nathália,Dapagliflozina,3,7,10mg,N07
-Nathália,Hydrion,11,4,?mg,N08
-Nathália,Midazolam,23,7,15mg,N09
-Nathália,Risperidona,12,21,3mg,N10
-Sérgio,Bupropriona 24h,52,7,150mg,S01
-Sérgio,Paroxetina,91,7,20mg,S02
+nome,medicamento,dosagem,qtd_atual,qtd_semana,id
+Nathália,Acetilcisteína,600mg,0,14,N01
+Nathália,Bromidrato de Vortioxetina,10mg,60,14,N02
+Nathália,Carbonato de Lítio,450mg,0,14,N03
+Nathália,Clonazepam,2mg,0,14,N04
+Nathália,Cloridrato de Clomipramina,75mg,13,14,N06
+Nathália,Dapagliflozina,10mg,3,7,N07
+Nathália,Hydrion,40mg,11,4,N08
+Nathália,Midazolam,15mg,23,7,N09
+Nathália,Risperidona,3mg,12,21,N10
+Sérgio,Bupropriona 24h,150mg,52,7,S01
+Sérgio,Paroxetina,20mg,91,7,S02
